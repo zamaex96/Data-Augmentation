@@ -16,7 +16,7 @@ def convert_to_binary(image, threshold):
 
 def main():
     # Input image path
-    input_image_path = 'C:/Users/USPLa/OneDrive/Desktop/dummy 2/00.jpg'
+    input_image_path = 'C:/dummy.jpg'
 
     # Load the original image
     original_image = Image.open(input_image_path)
