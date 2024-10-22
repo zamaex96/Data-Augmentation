@@ -21,3 +21,10 @@ This Python script uses the PIL (Python Imaging Library) to perform image proces
 - The `main()` function is called if the script is run directly.
 
 This script demonstrates resizing an image, applying interpolation, converting to binary, displaying the processed images, and saving the results to disk.
+
+<div align="center">
+  <a href="https://maazsalman.org/">
+    <img width="50" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/github/github-original.svg" alt="gh" />
+  </a>
+  <p> Explore More! 🚀</p>
+</div>
