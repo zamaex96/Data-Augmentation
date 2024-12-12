@@ -5,10 +5,10 @@ import matplotlib.pyplot as plt
 import pycwt as wavelet
 
 # Load the CSV file
-csv_file_path = r"C:\BULabAssets\BULabProjects\BiomaterialData\dataset\Alginate\Cropped\combined_filtered_data_Alg 1% – Ca 0_2.csv" # Replace with your actual CSV file path
+csv_file_path = r"C:\data.csv" # Replace with your actual CSV file path
 data = pd.read_csv(csv_file_path)
 # Folder to save the plots
-output_folder = r"C:\BULabAssets\BULabProjects\BiomaterialData\dataset\Alginate\Spectrogram\30pix\C2" # Replace with your desired folder name
+output_folder = r"C:\Spectrogram" # Replace with your desired folder name
 os.makedirs(output_folder, exist_ok=True)  # Create folder if it doesn't exist
 
 # Exclude the first and last column
