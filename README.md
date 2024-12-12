@@ -1,3 +1,4 @@
+# Bicubic Interpolation and Binary Thresholding
 This Python script uses the PIL (Python Imaging Library) to perform image processing operations including bicubic interpolation and binary thresholding on a specified input image. Here's a summary of its functionality:
 
 ### Import Libraries
@@ -21,14 +22,6 @@ This Python script uses the PIL (Python Imaging Library) to perform image proces
 - The `main()` function is called if the script is run directly.
 
 This script demonstrates resizing an image, applying interpolation, converting to binary, displaying the processed images, and saving the results to disk.
-
-<div align="center">
-  <a href="https://maazsalman.org/">
-    <img width="70" src="click-svgrepo-com.svg" alt="gh" />
-  </a>
-  <p> Explore More! 🚀</p>
-</div>
-
 
 
 # Continuous Wavelet Transform (CWT) Scalogram Generator
@@ -157,3 +150,10 @@ print(f"Scalograms saved to folder: {output_folder}")
 - Change `cmap` for different color schemes
 - Modify `dpi` for image resolution
 - Adjust Morlet wavelet parameter for different analysis needs
+
+<div align="center">
+  <a href="https://maazsalman.org/">
+    <img width="70" src="click-svgrepo-com.svg" alt="gh" />
+  </a>
+  <p> Explore More! 🚀</p>
+</div>
