@@ -151,6 +151,79 @@ print(f"Scalograms saved to folder: {output_folder}")
 - Modify `dpi` for image resolution
 - Adjust Morlet wavelet parameter for different analysis needs
 
+**Understanding the Code: A Step-by-Step Guide**
+
+**1. Import Necessary Libraries**
+```python
+import os
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+import pycwt as wavelet
+```
+* **os**: Used for file system operations, like creating directories.
+* **numpy**: Provides efficient numerical operations on arrays.
+* **pandas**: A powerful data analysis and manipulation tool for working with tabular data.
+* **matplotlib.pyplot**: A plotting library for creating visualizations.
+* **pycwt**: A library for performing Continuous Wavelet Transform (CWT) analysis.
+
+**2. Load the CSV Data**
+```python
+csv_file_path = r"C:\data.csv"  # Replace with your actual CSV file path
+data = pd.read_csv(csv_file_path)
+```
+* Reads the specified CSV file into a pandas DataFrame.
+
+**3. Prepare the Data**
+```python
+# Exclude the first column only
+data = data.iloc[:, 1:]
+```
+* Removes the first column from the DataFrame, as it might contain unnecessary information like timestamps or labels.
+
+**4. Set the Sampling Rate**
+```python
+sampling_rate = 10048  # Example: 2048 Hz
+```
+* Defines the sampling rate of the data, which is essential for accurate time-frequency analysis.
+
+**5. Iterate Over Columns and Perform CWT**
+```python
+for column in data.columns:
+    y = data[column].values  # Get the signal values of the column
+    x = np.arange(len(y)) / sampling_rate  # Generate the time axis based on the sampling rate
+    mother = wavelet.Morlet(6)
+    wave, scales, freqs, coi, fft, fftfreqs = wavelet.cwt(y, 1 / sampling_rate, wavelet=mother)
+```
+* **Iterates over each column:** Processes each column individually.
+* **Extracts signal values:** Retrieves the numerical values from the current column.
+* **Generates time axis:** Creates a time axis based on the sampling rate.
+* **Performs CWT:** Applies the Continuous Wavelet Transform using a Morlet wavelet with a wavelet parameter of 6.
+
+**6. Visualize and Save Scalograms**
+```python
+plt.figure(figsize=(10, 6))
+plt.imshow(np.abs(wave), extent=[x[0], x[-1], freqs[-1], freqs[0]], cmap='jet', aspect='auto')
+plt.axis('off')
+plot_filename = os.path.join(output_folder, f'{column}.png')
+plt.savefig(plot_filename, format='png', dpi=30, bbox_inches='tight', pad_inches=0)
+plt.close()
+```
+* **Creates a plot:** Initializes a figure and plots the absolute value of the CWT coefficients as an image.
+* **Removes axis:** Turns off the axis labels for a cleaner visualization.
+* **Saves the plot:** Saves the plot as a PNG image in the specified output folder.
+* **Closes the plot:** Releases memory used by the plot.
+
+**Key Points:**
+- **CWT:** A powerful tool for analyzing time-frequency properties of signals.
+- **Morlet wavelet:** A commonly used wavelet for analyzing oscillatory signals.
+- **Scalogram:** A visual representation of the time-frequency energy distribution of a signal.
+- **Figure size and axis removal:** Customize the plot appearance for better visualization.
+- **Saving plots:** Saves the plots as PNG images with high-quality settings.
+
+By following these steps, the code effectively processes each column of the CSV data, performs CWT, visualizes the results as scalograms, and saves them as individual PNG images.
+
+
 <div align="center">
   <a href="https://maazsalman.org/">
     <img width="70" src="click-svgrepo-com.svg" alt="gh" />
