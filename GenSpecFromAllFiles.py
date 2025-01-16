@@ -10,7 +10,7 @@ import librosa
 from sklearn.preprocessing import MinMaxScaler
 
 # Base paths
-base_csv_path = r"C:\InputFolder" 
+base_csv_path = r"C:\InputFolder" # should contains csv files namely C1 to C10
 base_output_path = r"C:\OutputFolder"
 resolution=30
 # List of classes from C1 to C10
