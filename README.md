@@ -223,7 +223,7 @@ plt.close()
 
 By following these steps, the code effectively processes each column of the CSV data, performs CWT, visualizes the results as scalograms, and saves them as individual PNG images.
 
-### Purpose of the Script ""
+### Purpose of the Script "GenSpecFromAllFiles.py"
 
 The script is designed to generate various types of time-frequency and signal transformation visualizations for input data stored in CSV files. It includes methods for generating **Continuous Wavelet Transform (CWT)**, **Short-Time Fourier Transform (STFT)**, **Gramian Angular Field (GAF)**, **Hilbert-Huang Transform (HHT)**, **Discrete Wavelet Transform (DWT)**, **Mel-Frequency Cepstral Coefficients (MFCC)**, **Recurrence Plots (RP)**, **Spectral Entropy**, and **Time-Frequency Embeddings**. These visualizations can be used for feature extraction in machine learning, deep learning, or signal analysis tasks, particularly in domains like biomedical signal processing, speech recognition, and pattern recognition.
 
