@@ -223,6 +223,105 @@ plt.close()
 
 By following these steps, the code effectively processes each column of the CSV data, performs CWT, visualizes the results as scalograms, and saves them as individual PNG images.
 
+### Purpose of the Script ""
+
+The script is designed to generate various types of time-frequency and signal transformation visualizations for input data stored in CSV files. It includes methods for generating **Continuous Wavelet Transform (CWT)**, **Short-Time Fourier Transform (STFT)**, **Gramian Angular Field (GAF)**, **Hilbert-Huang Transform (HHT)**, **Discrete Wavelet Transform (DWT)**, **Mel-Frequency Cepstral Coefficients (MFCC)**, **Recurrence Plots (RP)**, **Spectral Entropy**, and **Time-Frequency Embeddings**. These visualizations can be used for feature extraction in machine learning, deep learning, or signal analysis tasks, particularly in domains like biomedical signal processing, speech recognition, and pattern recognition.
+
+---
+
+### Step-by-Step Implementation
+
+#### 1. **Setup and Imports**
+The script imports essential Python libraries for data manipulation, signal processing, and visualization:
+- `os` for file and directory operations.
+- `numpy` and `pandas` for numerical computations and data handling.
+- `matplotlib` for creating plots.
+- Signal processing libraries such as `scipy.signal`, `pywt`, `librosa`, and `sklearn.preprocessing`.
+
+#### 2. **Define Base Paths and Parameters**
+- `base_csv_path`: Directory containing input CSV files (`C1.csv` to `C10.csv`).
+- `base_output_path`: Directory where generated images will be saved.
+- `classes`: List of class names, e.g., `C1`, `C2`, ..., `C10`.
+- `resolution`: Controls the DPI (dots per inch) for saving generated plots.
+
+#### 3. **Define Individual Processing Functions**
+
+Each processing function takes an input DataFrame, processes the signal data, and generates visualizations for each column (except the first, which is used as the x-axis).
+
+##### a. **Continuous Wavelet Transform (CWT) Spectrogram**
+- Uses PyWavelets (`pywt.cwt`) to compute the CWT for a range of widths.
+- Visualizes the resulting coefficients as a spectrogram using `plt.pcolormesh`.
+
+##### b. **Short-Time Fourier Transform (STFT) Spectrogram**
+- Computes the STFT using `scipy.signal.stft`.
+- Produces a time-frequency spectrogram by plotting the magnitude of the STFT coefficients.
+
+##### c. **Gramian Angular Field (GAF)**
+- Scales the signal into a range [-1, 1].
+- Constructs a GAF matrix based on trigonometric transformations.
+- Visualizes the GAF matrix as a 2D image.
+
+##### d. **Hilbert-Huang Transform (HHT)**
+- Computes the analytic signal using the Hilbert Transform (`scipy.signal.hilbert`).
+- Visualizes the amplitude envelope over time using `plt.pcolormesh`.
+
+##### e. **Discrete Wavelet Transform (DWT)**
+- Decomposes the signal into wavelet coefficients using `pywt.wavedec`.
+- Plots the coefficients at different decomposition levels.
+
+##### f. **Mel-Frequency Cepstral Coefficients (MFCC)**
+- Computes MFCC features using `librosa.feature.mfcc`.
+- Visualizes the MFCC coefficients as a spectrogram.
+
+##### g. **Recurrence Plot (RP)**
+- Embeds the signal in a time-delay space.
+- Computes the Euclidean distance matrix for the embedding.
+- Visualizes the distance matrix as a recurrence plot.
+
+##### h. **Spectral Entropy**
+- Computes the spectral entropy for sliding windows of the signal.
+- Plots the entropy values over time.
+
+##### i. **Time-Frequency Embedding**
+- Combines STFT and Mel-spectrogram visualizations in a single figure.
+- Scales the time axes to match the input signal.
+
+#### 4. **Process Each CSV File**
+- Reads each file corresponding to classes `C1` through `C10`.
+- Validates if the file exists and is non-empty.
+- Executes one or more of the defined processing functions (uncomment lines in the `main` function to use specific methods).
+
+#### 5. **Save the Results**
+- Each function saves the generated visualization as a `.png` file in a subdirectory under `base_output_path`, named after the class.
+
+#### 6. **Main Function**
+The `main` function orchestrates the workflow:
+- Iterates through all classes (`C1` to `C10`).
+- Reads the corresponding CSV file into a Pandas DataFrame.
+- Creates output directories for saving the results.
+- Calls the desired processing functions.
+
+#### 7. **Run the Script**
+The script executes the `main` function when run directly:
+```python
+if __name__ == "__main__":
+    main(base_csv_path, base_output_path, classes)
+```
+
+---
+
+### Usage Instructions
+1. Place your input CSV files in the directory specified by `base_csv_path`.
+2. Ensure each CSV file has:
+   - The first column as the x-axis (e.g., time).
+   - Remaining columns as signal data.
+3. Modify the `main` function to uncomment the desired processing functions.
+4. Run the script. Generated spectrograms will be saved in the respective class subdirectories under `base_output_path`.
+
+---
+
+This modular and customizable script simplifies the generation of various signal transformations and visualizations, making it suitable for exploratory data analysis and preprocessing in signal-related tasks.
+
 
 <div align="center">
   <a href="https://maazsalman.org/">
